@@ -1,52 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
     android:background="#FFFFFF"
+    android:padding="16dp"
     tools:context=".DetailActivity">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/topAppBar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-        android:titleTextColor="@android:color/white"
-        app:navigationIcon="@drawable/back"
-        app:title="Your Page Title" />
-
-    <!-- Title -->
-    <TextView
-        android:id="@+id/detail_title"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Bill Details"
-        android:textSize="26sp"
-        android:textStyle="bold"
-        android:textColor="#434E78"
-        android:paddingBottom="8dp"
-        android:letterSpacing="0.02"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#F7E396"
+        android:titleTextColor="#434E78"
+        app:titleTextColor="#434E78"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/back"
+        app:navigationIconTint="#434E78"
+        app:title="Bill Details" />
 
-    <!-- Details Card -->
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/detail_card"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        app:cardBackgroundColor="#FFFFFF"
         app:cardCornerRadius="16dp"
         app:cardElevation="6dp"
-        app:strokeWidth="1dp"
-        app:strokeColor="#90CAF9"
-        app:cardBackgroundColor="#FFFFFF"
-        app:layout_constraintTop_toBottomOf="@id/detail_title"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/topAppBar"
+        app:strokeColor="#90CAF9"
+        app:strokeWidth="1dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -54,78 +42,60 @@
             android:orientation="vertical"
             android:padding="24dp">
 
-            <!-- Month -->
             <TextView
                 android:id="@+id/tv_detail_month"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:textColor="#434E78"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:textColor="#434E78"
-                android:layout_marginBottom="16dp"
                 tools:text="Month: March 2025" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#E0E0E0"
-                android:layout_marginBottom="16dp" />
+                android:layout_marginBottom="16dp"
+                android:background="#E0E0E0" />
 
-            <!-- Units -->
             <TextView
                 android:id="@+id/tv_detail_unit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:textColor="#434E78"
                 android:layout_marginBottom="8dp"
+                android:textColor="#434E78"
+                android:textSize="16sp"
                 tools:text="Units Used (kWh): 467.00" />
 
-            <!-- Total Charges -->
             <TextView
                 android:id="@+id/tv_detail_total_charges"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:textColor="#434E78"
                 android:layout_marginBottom="8dp"
+                android:textColor="#434E78"
+                android:textSize="16sp"
                 tools:text="Total Charges: RM 163.17" />
 
-            <!-- Rebate -->
             <TextView
                 android:id="@+id/tv_detail_rebate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:textColor="#434E78"
                 android:layout_marginBottom="16dp"
+                android:textColor="#434E78"
+                android:textSize="16sp"
                 tools:text="Rebate Percentage: 5.0%" />
 
-            <!-- Final Cost -->
             <TextView
                 android:id="@+id/tv_detail_final_cost"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textColor="#434E78"
                 android:textSize="24sp"
                 android:textStyle="bold"
-                android:textColor="#434E78"
-                android:layout_marginTop="8dp"
                 tools:text="Final Cost: RM 155.01" />
 
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
-
-    <!-- Bottom Navigation -->
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#F7E396"
-        app:itemTextColor="#434E78"
-        app:labelVisibilityMode="labeled"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_nav_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

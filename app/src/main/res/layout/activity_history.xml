@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,41 +9,32 @@
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/topAppBar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-        android:titleTextColor="@android:color/white"
-        app:navigationIcon="@drawable/back" />
-
-    <TextView
-        android:id="@+id/history_title"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Billing History"
-        android:textSize="26sp"
-        android:textStyle="bold"
-        android:textColor="#434E78"
-        android:paddingHorizontal="16dp"
-        android:paddingTop="20dp"
-        android:paddingBottom="8dp"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#F7E396"
+        android:titleTextColor="#434E78"
+        app:titleTextColor="#434E78"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/back"
+        app:navigationIconTint="#434E78"
+        app:title="Billing History" />
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/filter_card"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        app:cardBackgroundColor="#F7E396"
         app:cardCornerRadius="14dp"
         app:cardElevation="6dp"
-        app:strokeWidth="1dp"
-        app:strokeColor="#90CAF9"
-        app:cardBackgroundColor="#F7E396"
-        app:layout_constraintTop_toBottomOf="@id/history_title"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/topAppBar"
+        app:strokeColor="#90CAF9"
+        app:strokeWidth="1dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -55,23 +45,22 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Filter by Month 🔍"
-                android:textSize="14sp"
-                android:textStyle="bold"
+                android:layout_marginBottom="6dp"
+                android:text="Select Month"
                 android:textColor="#434E78"
-                android:layout_marginBottom="6dp"/>
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
             <Spinner
                 android:id="@+id/spinner_filter_month"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:backgroundTint="#434E78"
                 android:minHeight="42dp"
-                android:spinnerMode="dropdown"
-                android:backgroundTint="#434E78"/>
+                android:spinnerMode="dropdown" />
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
-    <!-- Bottom Navigation -->
     <ListView
         android:id="@+id/listview_history"
         android:layout_width="0dp"
@@ -82,9 +71,7 @@
         android:paddingHorizontal="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/filter_card"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@id/filter_card" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

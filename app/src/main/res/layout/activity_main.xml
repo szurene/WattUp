@@ -88,16 +88,6 @@
                     android:textColorHint="#434E78"/>
             </com.google.android.material.textfield.TextInputLayout>
 
-            <!-- Rebate Label -->
-            <TextView
-                android:id="@+id/textview_rebate_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Select Rebate Percentage"
-                android:textColor="#434E78"
-                android:textSize="14sp"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="8dp"/>
 
             <!-- Rebate Label -->
             <TextView

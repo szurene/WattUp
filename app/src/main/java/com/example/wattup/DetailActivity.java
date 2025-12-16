@@ -2,6 +2,7 @@ package com.example.wattup;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View; // Import View for the listener
 import android.widget.TextView;
 
 import com.example.wattup.database.DatabaseHelper;
@@ -37,12 +38,14 @@ public class DetailActivity extends AppCompatActivity {
         }
 
         MaterialToolbar toolbar = findViewById(R.id.topAppBar);
-        setSupportActionBar(toolbar);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
-        toolbar.setNavigationOnClickListener(v -> onBackPressed());
     }
 
     private void loadRecordDetails(int id) {

@@ -10,12 +10,14 @@
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/topAppBar"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-        android:titleTextColor="@android:color/white"
-        app:navigationIcon="@drawable/back"
-        app:title="Your Page Title" />
+        android:background="#F7E396"  android:titleTextColor="#434E78" app:navigationIcon="@drawable/back"
+        app:navigationIconTint="#434E78"
+        app:titleTextColor="#434E78" app:title="About"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <TextView
         android:id="@+id/about_app_name"
@@ -25,22 +27,10 @@
         android:textSize="26sp"
         android:textStyle="bold"
         android:textColor="#434E78"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/topAppBar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="8dp"/>
-
-    <TextView
-        android:id="@+id/about_version"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Version 1.0 (Java &amp; SQLite)"
-        android:textSize="14sp"
-        android:textColor="#434E78"
-        android:layout_marginBottom="24dp"
-        app:layout_constraintTop_toBottomOf="@id/about_app_name"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/profile_card"
@@ -52,7 +42,7 @@
         app:strokeWidth="1dp"
         app:strokeColor="#90CAF9"
         app:cardBackgroundColor="#FFFFFF"
-        app:layout_constraintTop_toBottomOf="@id/about_version"
+        app:layout_constraintTop_toBottomOf="@+id/about_app_name"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
@@ -145,7 +135,7 @@
         app:layout_constraintTop_toBottomOf="@id/profile_card"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:text="Application Website: Click Here for GitHub"/>
+        tools:text="WattUp"/>
 
     <TextView
         android:id="@+id/tv_about_copyright"

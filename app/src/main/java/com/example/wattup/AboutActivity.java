@@ -30,7 +30,7 @@ public class AboutActivity extends AppCompatActivity {
 
         tvCopyright.setText("Copyright © 2025 WATTUP. All rights reserved.");
 
-        String githubLink = "<a href='https://github.com/[YourGitHubUsername]/WattUp'>Application GitHub Page</a>";
+        String githubLink = "<a href='https://github.com/szurene/WattUp</a>";
         tvUrl.setText(android.text.Html.fromHtml(githubLink));
         tvUrl.setMovementMethod(LinkMovementMethod.getInstance());
 

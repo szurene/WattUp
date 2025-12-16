@@ -3,8 +3,11 @@ package com.example.wattup;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.ListView;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.Spinner;
 
 import com.example.wattup.database.DatabaseHelper;
 import com.example.wattup.model.BillRecord;
@@ -17,8 +20,10 @@ import java.util.Locale;
 public class HistoryActivity extends AppCompatActivity {
 
     private ListView listViewHistory;
+    private Spinner spinnerFilterMonth;
     private DatabaseHelper dbHelper;
-    private List<BillRecord> recordList;
+    private List<BillRecord> allRecordList;
+    private List<BillRecord> filteredRecordList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,23 +32,68 @@ public class HistoryActivity extends AppCompatActivity {
 
         dbHelper = new DatabaseHelper(this);
         listViewHistory = findViewById(R.id.listview_history);
+        spinnerFilterMonth = findViewById(R.id.spinner_filter_month);
 
-        loadHistoryData();
+        setupToolbar();
+        setupSpinnerFilter();
         setupListItemClickListener();
+
+    }
+
+    private void setupToolbar() {
         MaterialToolbar toolbar = findViewById(R.id.topAppBar);
-        setSupportActionBar(toolbar);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        toolbar.setNavigationOnClickListener(v -> onBackPressed());
+        toolbar.setNavigationOnClickListener(v -> finish());
+    }
+
+    private void setupSpinnerFilter() {
+        String[] months = {"All Months", "January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December"};
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(
+                this,
+                android.R.layout.simple_spinner_dropdown_item,
+                months
+        );
+        spinnerFilterMonth.setAdapter(adapter);
+
+        spinnerFilterMonth.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String selectedMonth = (String) parent.getItemAtPosition(position);
+                filterHistoryData(selectedMonth);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                filterHistoryData("All Months");
+            }
+        });
     }
 
     private void loadHistoryData() {
-        recordList = dbHelper.getAllBillRecords();
+        allRecordList = dbHelper.getAllBillRecords();
+
+        filterHistoryData(spinnerFilterMonth.getSelectedItem() != null ?
+                (String) spinnerFilterMonth.getSelectedItem() : "All Months");
+    }
+
+    private void filterHistoryData(String selectedMonth) {
+        filteredRecordList = new ArrayList<>();
         ArrayList<String> displayList = new ArrayList<>();
 
-        for (BillRecord record : recordList) {
+        if ("All Months".equals(selectedMonth)) {
+            filteredRecordList.addAll(allRecordList);
+        } else {
+            for (BillRecord record : allRecordList) {
+                if (record.getMonth().equalsIgnoreCase(selectedMonth)) {
+                    filteredRecordList.add(record);
+                }
+            }
+        }
+
+        for (BillRecord record : filteredRecordList) {
             String display = String.format(
                     Locale.getDefault(),
                     "%s  •  RM %.2f",
@@ -64,7 +114,7 @@ public class HistoryActivity extends AppCompatActivity {
 
     private void setupListItemClickListener() {
         listViewHistory.setOnItemClickListener((parent, view, position, id) -> {
-            BillRecord selectedRecord = recordList.get(position);
+            BillRecord selectedRecord = filteredRecordList.get(position);
             Intent intent = new Intent(HistoryActivity.this, DetailActivity.class);
             intent.putExtra("RECORD_ID", selectedRecord.getId());
             startActivity(intent);
