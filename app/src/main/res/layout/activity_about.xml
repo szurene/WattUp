@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
     android:background="#FFFFFF"
     tools:context=".AboutActivity">
 
@@ -12,142 +11,195 @@
         android:id="@+id/topAppBar"
         android:layout_width="0dp"
         android:layout_height="?attr/actionBarSize"
-        android:background="#F7E396"  android:titleTextColor="#434E78" app:navigationIcon="@drawable/back"
-        app:navigationIconTint="#434E78"
-        app:titleTextColor="#434E78" app:title="About"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
-    <TextView
-        android:id="@+id/about_app_name"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="WattUp⚡"
-        android:textSize="26sp"
-        android:textStyle="bold"
-        android:textColor="#434E78"
-        app:layout_constraintTop_toBottomOf="@id/topAppBar"
-        app:layout_constraintStart_toStartOf="parent"
+        android:background="#F7E396"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="8dp"/>
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/profile_card"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        app:cardCornerRadius="12dp"
-        app:cardElevation="8dp"
-        app:strokeWidth="1dp"
-        app:strokeColor="#90CAF9"
-        app:cardBackgroundColor="#FFFFFF"
-        app:layout_constraintTop_toBottomOf="@+id/about_app_name"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/back"
+        app:navigationIconTint="#434E78"
+        app:title="About"
+        app:titleTextColor="#434E78" />
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_about_copyright"
+        app:layout_constraintTop_toBottomOf="@id/topAppBar">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="24dp"
-            android:gravity="center_horizontal">
-
-            <ImageView
-                android:id="@+id/iv_profile_picture"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_marginBottom="16dp"
-                android:scaleType="centerCrop"
-                android:contentDescription="Developer Profile Picture"
-                android:src="@drawable/zureen" />
+            android:paddingBottom="24dp">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Developer Profile"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="#434E78"
-                android:layout_marginBottom="16dp"/>
-
-            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/about_app_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                app:cardCornerRadius="8dp"
-                app:cardElevation="0dp"  app:strokeWidth="1dp"   app:strokeColor="#DDDDDD"
-                app:cardBackgroundColor="#FFFFFF">
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="16dp"
+                android:gravity="center"
+                android:text="WattUp⚡"
+                android:textColor="#434E78"
+                android:textSize="26sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/profile_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="16dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="6dp"
+                app:strokeColor="#90CAF9"
+                app:strokeWidth="1dp">
 
                 <LinearLayout
-                    android:id="@+id/student_info_section"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <ImageView
+                        android:id="@+id/iv_profile_picture"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_marginBottom="12dp"
+                        android:contentDescription="Developer Profile Picture"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/zureen" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        android:text="Developer Profile"
+                        android:textColor="#434E78"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:cardBackgroundColor="#F8F9FA"
+                        app:cardCornerRadius="8dp"
+                        app:cardElevation="0dp"
+                        app:strokeColor="#DDDDDD"
+                        app:strokeWidth="1dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="12dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:text="Student Information"
+                                android:textColor="#434E78"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tv_about_fullname"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="#434E78"
+                                tools:text="Zureen Salsabila binti Zaiful Amri" />
+
+                            <TextView
+                                android:id="@+id/tv_about_studentid"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="#434E78"
+                                tools:text="2023400834" />
+
+                            <TextView
+                                android:id="@+id/tv_about_course"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="#434E78"
+                                tools:text="ICT602 Mobile Technology" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/instruction_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp"
+                app:strokeColor="#E0E0E0"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="16dp">
+                    android:padding="20dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Student Information"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
+                        android:layout_marginBottom="8dp"
+                        android:text="How to Use"
                         android:textColor="#434E78"
-                        android:layout_marginBottom="8dp"/>
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/tv_about_fullname"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="4dp"
+                        android:lineSpacingExtra="4dp"
+                        android:text="1. Enter your total kWh usage.\n2. Select your rebate percentage (if applicable).\n3. Click 'Calculate' to see the breakdown and final cost.\n4.Click 'Save Bill' to save the final estimated cost.\n5. View the saved bills in bill history."
                         android:textColor="#434E78"
-                        tools:text="Zureen Salsabila binti Zaiful Amri"/>
-
-                    <TextView
-                        android:id="@+id/tv_about_studentid"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="4dp"
-                        android:textColor="#434E78"
-                        tools:text="2023400834"/>
-
-                    <TextView
-                        android:id="@+id/tv_about_course"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="#434E78"
-                        tools:text="ICT602 Mobile Technology and Development"/>
+                        android:textSize="14sp" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
-        </LinearLayout>
-    </com.google.android.material.card.MaterialCardView>
 
-    <TextView
-        android:id="@+id/tv_about_url"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:textSize="16sp"
-        android:textColor="#434E78"
-        android:textColorLink="#434E78"
-        android:textStyle="italic"
-        app:layout_constraintTop_toBottomOf="@id/profile_card"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:text="WattUp"/>
+            <TextView
+                android:id="@+id/tv_about_url"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="16dp"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="View GitHub Repository"
+                android:textColor="#1A73E8"
+                android:textSize="16sp"
+                android:textStyle="bold|italic" />
+
+        </LinearLayout>
+    </ScrollView>
 
     <TextView
         android:id="@+id/tv_about_copyright"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:textAlignment="center"
-        android:textSize="12sp"
         android:textColor="#434E78"
+        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:text="Copyright © 2025 WATTUP. All rights reserved."/>
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="Copyright © 2025 WATTUP. All rights reserved." />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

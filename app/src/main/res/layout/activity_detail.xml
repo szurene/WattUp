@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    android:padding="16dp"
     tools:context=".DetailActivity">
 
     <com.google.android.material.appbar.MaterialToolbar
@@ -13,20 +12,22 @@
         android:layout_width="0dp"
         android:layout_height="?attr/actionBarSize"
         android:background="#F7E396"
-        android:titleTextColor="#434E78"
-        app:titleTextColor="#434E78"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:navigationIcon="@drawable/back"
         app:navigationIconTint="#434E78"
-        app:title="Bill Details" />
+        app:title="Bill Details"
+        app:titleTextColor="#434E78" />
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/detail_card"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
         app:cardBackgroundColor="#FFFFFF"
         app:cardCornerRadius="16dp"
         app:cardElevation="6dp"
@@ -40,7 +41,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="24dp">
+            android:padding="20dp">
 
             <TextView
                 android:id="@+id/tv_detail_month"
@@ -50,7 +51,7 @@
                 android:textColor="#434E78"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                tools:text="Month: March 2025" />
+                tools:text="Month: January" />
 
             <View
                 android:layout_width="match_parent"
@@ -65,7 +66,7 @@
                 android:layout_marginBottom="8dp"
                 android:textColor="#434E78"
                 android:textSize="16sp"
-                tools:text="Units Used (kWh): 467.00" />
+                tools:text="Units Used (kWh): 471.00" />
 
             <TextView
                 android:id="@+id/tv_detail_total_charges"
@@ -74,26 +75,25 @@
                 android:layout_marginBottom="8dp"
                 android:textColor="#434E78"
                 android:textSize="16sp"
-                tools:text="Total Charges: RM 163.17" />
+                tools:text="Total Charges: RM 165.24" />
 
             <TextView
                 android:id="@+id/tv_detail_rebate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="20dp"
                 android:textColor="#434E78"
                 android:textSize="16sp"
-                tools:text="Rebate Percentage: 5.0%" />
+                tools:text="Rebate Percentage: 2.0%" />
 
             <TextView
                 android:id="@+id/tv_detail_final_cost"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
                 android:textColor="#434E78"
-                android:textSize="24sp"
+                android:textSize="26sp"
                 android:textStyle="bold"
-                tools:text="Final Cost: RM 155.01" />
+                tools:text="Final Cost: RM 161.93" />
 
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
