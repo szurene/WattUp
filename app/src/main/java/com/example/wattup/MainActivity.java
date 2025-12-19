@@ -109,10 +109,22 @@ public class MainActivity extends AppCompatActivity {
 
         if (id != -1) {
             showSuccessDialog(month);
-            currentResult = null;
+            clearForm();
         } else {
             Toast.makeText(this, "Error: Could not save to database", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void clearForm() {
+        editTextUnits.setText("");
+        editTextUnits.clearFocus();
+        spinnerMonth.setSelection(0);
+        radioGroupRebate.check(R.id.radio_rebate_0);
+
+        textViewTotalCharges.setText("Total Charges: RM 0.00");
+        textViewFinalCost.setText("Final Cost: RM 0.00");
+
+        currentResult = null;
     }
 
     private void showSuccessDialog(String month) {

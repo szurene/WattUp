@@ -47,6 +47,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+    // CREATE: Add new record
     public long addBillRecord(BillRecord record) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -61,6 +62,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return id;
     }
 
+    // READ: Get single record
     public BillRecord getBillRecord(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -90,6 +92,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return record;
     }
 
+    // READ: Get all records for History
     public List<BillRecord> getAllBillRecords() {
         List<BillRecord> recordList = new ArrayList<>();
 
@@ -115,5 +118,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         db.close();
         return recordList;
+    }
+
+    // --- NEW: UPDATE METHOD ---
+    public void updateBillRecord(int id, double units, double charges, double rebate, double finalCost) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(KEY_UNITS, units);
+        values.put(KEY_TOTAL_CHARGES, charges);
+        values.put(KEY_REBATE, rebate);
+        values.put(KEY_FINAL_COST, finalCost);
+
+        // Update the row where ID matches
+        db.update(TABLE_BILLS, values, KEY_ID + " = ?", new String[]{String.valueOf(id)});
+        db.close();
+    }
+
+    // --- NEW: DELETE METHOD ---
+    public void deleteBillRecord(int id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_BILLS, KEY_ID + " = ?", new String[]{String.valueOf(id)});
+        db.close();
     }
 }
